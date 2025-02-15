@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robin Sajan - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #95a5a6;
+            --accent-color: #e74c3c;
+            --dark-bg: #1a1a1a;
+            --light-bg: #f5f6fa;
+            --text-color: #ffffff;
+            --gray-100: #f7f7f7;
+            --gray-200: #e5e5e5;
+            --gray-300: #d4d4d4;
+            --gray-400: #a3a3a3;
+            --gray-500: #737373;
+            --gray-600: #525252;
+            --gray-700: #404040;
+            --gray-800: #262626;
+            --gray-900: #171717;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: #22263b;
+            color: var(--text-color);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        .page {
+            display: none;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .page.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Header Styles */
+        .header {
+            background-color: #202236;
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            z-index: 1001; /* Keep logo above menu */
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0.5rem;
+            z-index: 1001; /* Keep hamburger above menu */
+        }
+
+        .hamburger-line {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px 0;
+            background-color: white;
+            transition: all 0.3s ease;
+        }
+
+        /* Mobile Responsive Styles */
+        @media screen and (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: -100vh; /* Start from above the viewport */
+                left: 0;
+                flex-direction: column;
+                background-color: #202236;
+                width: 100%;
+                height: 100vh;
+                padding-top: 80px; /* Space for header */
+                transition: top 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+                gap: 2rem;
+                align-items: center;
+                justify-content: flex-start;
+            }
+
+            .nav-menu.active {
+                top: 0; /* Slide down to fill viewport */
+            }
+
+            .nav-menu li {
+                opacity: 0;
+                transform: translateY(-20px);
+                transition: opacity 0.3s ease, transform 0.3s ease;
+            }
+
+            .nav-menu.active li {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            /* Stagger the animation for each menu item */
+            .nav-menu li:nth-child(1) { transition-delay: 0.2s; }
+            .nav-menu li:nth-child(2) { transition-delay: 0.3s; }
+            .nav-menu li:nth-child(3) { transition-delay: 0.4s; }
+            .nav-menu li:nth-child(4) { transition-delay: 0.5s; }
+            .nav-menu li:nth-child(5) { transition-delay: 0.6s; }
+
+            .nav-menu li a {
+                font-size: 1.5rem;
+                display: block;
+                padding: 1rem 2rem;
+            }
+
+            /* Hamburger Animation */
+            .hamburger.active .hamburger-line:nth-child(1) {
+                transform: rotate(45deg) translate(8px, 6px);
+            }
+
+            .hamburger.active .hamburger-line:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active .hamburger-line:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -5px);
+            }
+
+            /* When menu is active, make header background solid */
+            .header.menu-active {
+                background-color: #202236
+            }
+        }
+
+
+
+        /* Home Page */
+        #home {
+            background: #22263b;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start; /* Aligns content to the left */
+            text-align: left; /* Aligns text to the left */
+            padding-top: 80px;
+            padding-left: 200px; /* Adjust left padding if needed */
+            height: 100vh; /* Optional: makes sure it takes the full viewport height */
+        }
+        
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-content h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            color: var(--text-color);
+            font-size: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.2);
+            color:#ff5763;
+        }
+
+        /* About Page */
+        #about {
+            padding-top: 100px;
+        }
+
+        .about-grid {
+            max-width: 2000px;
+            margin: 0 12rem;
+        }
+
+        .about-content h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .about-content p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        #profile-section {
+            padding-top: 100px;
+        }
+    
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+    
+        .profile-content h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+        }
+    
+        .profile-content p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+        /* Timeline */
+        .history-container {
+          position: relative;
+          width: 80%;
+          margin: auto;
+        }
+    
+        .history {
+          position: relative;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 100%;
+          margin: 30px 0;
+        }
+    
+        .history-line {
+          position: absolute;
+          top: 50%;
+          left: 0;
+          width: 100%;
+          height: 4px;
+          background: #ff5763;
+          transform: translateY(-50%);
+          z-index: 0;
+        }
+    
+        .history-item {
+          position: relative;
+          background: white;
+          border: 3px solid #ff5763;
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          cursor: pointer;
+          z-index: 2;
+          transition: transform 0.3s ease-in-out, background 0.3s;
+        }
+    
+        .history-item:hover, .highlight {
+          background: #ffcc00; /* Highlight active */
+          transform: scale(1.3);
+        }
+    
+        /* Timeline Titles */
+        .history-title {
+          position: absolute;
+          top: -30px;
+          width: max-content;
+          font-size: 14px;
+          font-weight: bold;
+          color: #ff5763;
+        }
+    
+        /* Content Section */
+        .details-section {
+          width: 80%;
+          margin: auto;
+          padding: 30px;
+          text-align: center;
+          transition: opacity 0.5s ease-in-out;
+        }
+    
+        .details {
+          display: none;
+          font-size: 1.2em;
+          color: #333;
+          transition: opacity 0.5s ease-in-out;
+        }
+    
+        .details h2 {
+          color: #ff5763;
+          margin-bottom: 10px;
+        }
+    
+        .details.highlight-content {
+          display: block;
+          opacity: 1;
+          color: white;
+        }
+    
+        /* Bullet Points */
+        .details ul {
+          list-style-type: disc;
+          padding-left: 20px;
+          text-align: left;
+          display: inline-block;
+        }
+    
+        @media (max-width: 786px) {
+          .history-title {
+            display: none;
+          }
+          .details-section {
+            width: 100%;
+            margin: 0;
+            padding: 20px;
+          }
+        }
+        /* Skills Page */
+        #skills {
+            padding-top: 100px;
+        }
+
+        .skills-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .skill-card {
+            background: #4551d4;
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .skill-card i {
+            font-size: 4rem;
+            color: #ff5763;
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Projects Page */
+        #projects {
+            padding-top: 100px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 3rem auto;
+        }
+
+        .project-card {
+            background: #202236;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-content p {
+            font-size: 1.2rem;
+        }
+
+        /* Contact Page */
+        #contact {
+            padding-top: 100px;
+            text-align: center;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 3rem auto;
+            background: #202236;
+            padding: 3rem;
+            border-radius: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: none;
+            border-radius: 10px;
+            color: var(--text-color);
+            font-size: 1.1rem;
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        button {
+            background: var(--accent-color);
+            color: var(--text-color);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+ 
+            #home {
+                padding-top: 20px;
+                padding-left: 20px; /* Adjust left padding if needed */
+                height: 100vh; /* Optional: makes sure it takes the full viewport height */
+                overflow-y: scroll;
+                
+            }
+            .hero-content h1 {
+                font-size: 3rem;
+                margin-top: 250px;
+            }
+
+            .aboput-grid{
+                max-width: 500px;
+            }
+            .about-content{
+                width:310px;
+                margin-left:-200px;
+                font-size: 1rem;
+                
+            }
+            .history-container{
+                width:100%;
+            }
+            .details-section{
+                width: 100%;
+                padding: 0px;
+                font-size: 1rem;
+            }
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+        }
+        /* [Previous styles remain the same until header styles] */
+
+
+        /* [Previous styles remain the same until skill-card] */
+
+        .skill-card {
+            background: #202236;
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            border: 1px solid var(--gray-700);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            background: var(--gray-700);
+        }
+
+        .project-card {
+            background: #202236;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            border: 1px solid var(--gray-700);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            background: var(--gray-700);
+        }
+
+        /* Chat Styles */
+        .chat-widget {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+
+        .chat-toggle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #ff5763;
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .chat-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .chat-container {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 350px;
+            height: 500px;
+            background: var(--gray-800);
+            border-radius: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            display: none;
+            flex-direction: column;
+            border: 1px solid var(--gray-700);
+        }
+
+        .chat-header {
+            padding: 1.5rem;
+            background: var(--gray-900);
+            border-radius: 20px 20px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chat-header h3 {
+            margin: 0;
+            color: var(--text-color);
+        }
+
+        .close-chat {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .chat-messages {
+            flex-grow: 1;
+            padding: 1.5rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .message {
+            max-width: 80%;
+            padding: 1rem;
+            border-radius: 15px;
+            margin-bottom: 0.5rem;
+        }
+
+        .message.user {
+            background: #ff5763;
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 5px;
+        }
+
+        .message.bot {
+            background: var(--gray-700);
+            color: white;
+            align-self: flex-start;
+            border-bottom-left-radius: 5px;
+        }
+
+        .chat-input {
+            padding: 1.5rem;
+            display: flex;
+            gap: 1rem;
+            border-top: 1px solid #ff5763;
+        }
+
+        .chat-input input {
+            flex-grow: 1;
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            background: var(--gray-700);
+            color: var(--text-color);
+            font-size: 1rem;
+        }
+
+        .chat-input button {
+            padding: 1rem 1.2rem;
+            background: #ff5763;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .chat-input button:hover {
+            transform: scale(1.05);
+        }
+
+        /* Add to existing responsive styles */
+        @media (max-width: 768px) {
+            .chat-container {
+                width: 100%;
+                height: 100vh;
+                bottom: 0;
+                right: 0;
+                border-radius: 0;
+            }
+
+            .chat-toggle {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- [Previous HTML content remains the same until before closing body tag] -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="#" class="logo"><img  src="Group 11.png" width="50"></a>
+            
+            <button class="hamburger" aria-label="Toggle Menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+
+            <ul class="nav-menu">
+                <li><a href="#" onclick="showPage('home')">Home</a></li>
+                <li><a href="#" onclick="showPage('about')">About</a></li>
+                <li><a href="#" onclick="showPage('skills')">Skills</a></li>
+                <li><a href="#" onclick="showPage('projects')">Projects</a></li>
+                <!-- <li><a href="#" onclick="showPage('contact')">Contact</a></li> -->
+            </ul>
+        </nav>
+    </header>
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        const header = document.querySelector('.header');
+
+        hamburger.addEventListener('click', toggleMenu);
+
+        function toggleMenu() {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            header.classList.toggle('menu-active');
+            
+            // Toggle aria-expanded for accessibility
+            const isExpanded = hamburger.classList.contains('active');
+            hamburger.setAttribute('aria-expanded', isExpanded);
+        }
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-menu li a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                header.classList.remove('menu-active');
+                hamburger.setAttribute('aria-expanded', false);
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                header.classList.remove('menu-active');
+                hamburger.setAttribute('aria-expanded', false);
+            }
+        });
+
+        // Prevent menu from closing when clicking inside
+        navMenu.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+    </script>
+
+    <div id="home" class="page active">
+        <div class="hero-content">
+            <h1 style="text-align:left;margin-top:100px">Hello, I'm <br><div style="margin-top: -50px">Robin Sajan</div></h1>
+            <div>
+                <p style="text-align: justify;">I'm a <b style="color:#ff5763">Data Scientist</b> at Jio with over a year of experience in Generative AI and Machine Learning, building scalable AI-driven solutions. I’m passionate about solving complex problems, optimizing AI workflows, and exploring the latest advancements in the field.
+                My expertise includes Python, Gen-AI, Machine Learning, SQL databases, and more, with a strong focus on RAG</p>
+            </div>
+            
+            <div class="social-links">
+                <a href="mailto:robinsajan4@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://linkedin.com/in/your-profile"><i class="fab fa-linkedin"></i></a>
+                <a href="tel:+918879099411"><i class="fas fa-phone"></i></a>
+                <a href="https://github.com/yourusername"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div id="about" class="page">
+        <div class="about-grid">
+            <div class="about-content">
+                <h2 style="color:#ff5763">About Me</h2>
+                <p style="text-align: justify;">I am Robin Sajan, an Associate Data Scientist with a strong foundation in machine learning, data engineering, large language models and AI security. My journey began with a Bachelor's degree in Computer Engineering, where I honed my skills in algorithms, data structures, and scalable systems. Through hands-on experience, I have worked on cutting-edge AI security solutions, recommendation systems, and large-scale data pipelines..</p>
+                <p style="text-align: justify;">My expertise lies in enhancing AI safety, as demonstrated by my work on the Safe AI Platform and the Prompt Injection Detection Suite, reducing vulnerabilities in LLM applications. I have also developed RAG-based chatbots, fine-tuned BERT for PII detection, and optimized data processing workflows handling terabytes of data weekly.</p>
+                <p style="text-align: justify;">Beyond technology, I am an explorer at heart. Whether immersing myself in anime, playing football, or delving into astronomy, I approach each passion with enthusiasm and curiosity.</p>
+                <p style="text-align: justify;">Let’s connect to collaborate, exchange insights, or explore the limitless possibilities of AI and beyond.</p>
+            </div>
+           
+        </div>
+        <br><br>
+        <section class="history-container">
+    
+
+            <!-- Timeline -->
+            <div class="history">
+              <div class="history-line"></div>
+              <div class="history-item highlight" data-slide="0">
+                <div class="history-title">Data Scientist @ Jio Platforms ltd. </div>
+              </div>
+              <div class="history-item" data-slide="1">
+                <div class="history-title">Web Developer Intern</div>
+              </div>
+              <div class="history-item" data-slide="2">
+                <div class="history-title">Education </div>
+              </div>
+            </div>
+        
+            <!-- Content Section -->
+            <div class="details-section">
+              <div class="details highlight-content">
+                <h2>Data Scientist (Dec 2023-present)</h2>
+                <ul>
+                    <li><strong>Developed Safe AI Platform</strong> – Reduced LLM security vulnerabilities by 30%, enhancing system reliability and security.</li>
+                    <li><strong>Built Prompt Injection Detection Suite</strong> – Created a fine-tuned model that outperformed existing tools, generating 10K+ adversarial prompts and identifying 25% more vulnerabilities.</li>
+                    <li><strong>Designed PII Identification Suite</strong> – Achieved 100% test case validation, ensuring data privacy compliance and reducing regulatory risks.</li>
+                    <li><strong>Developed RAG-based Chatbot</strong> – Improved information security query resolution time to under 10 minutes, enhancing efficiency.</li>
+                    <li><strong>Engineered a Recommendation System</strong> – Increased automation efficiency by 40%, improving relevance and user experience.</li>
+                    <li><strong>Built Scalable Data Pipelines</strong> – Processed 10TB+ of data weekly using PySpark and Hive, optimizing storage and reducing ingestion latency by 50%.</li>
+                    <li><strong>Automated ETL Processes</strong> – Transformed and loaded 5TB+ of data into Hive tables, boosting analytics and improving reporting accuracy.</li>
+                    <li><strong>Created Social Media Summarizer</strong> – Delivered sentiment-based insights for strategic decision-making and market positioning.</li>
+                </ul>
+                
+              </div>
+              <div class="details">
+                <h2>Web Developer Intern @ Sahu Technology</h2>
+                <ul>
+                    <li><strong>Web Developer Intern at Sahu Technology</strong> – Developed and enhanced features for a blog application using Django.</li>
+                    <li><strong>Implemented Comment Like Feature</strong> – Added functionality for users to like comments, improving engagement and user interaction.</li>
+                    <li><strong>Collaborated with Development Team</strong> – Assisted in debugging, testing, and refining application features.</li>
+                </ul>
+                
+              </div>
+              <div class="details">
+                <h2>Bachelors of Engineering in Computer Science</h2>
+                <ul>
+                    <li>Bachelor of Technology in Computer Engineering from Pillai College of Engineering (2019-2023).</li>
+                    <li>Achieved a CGPA of 9.48, reflecting strong academic performance.</li>
+                    <li>Covered subjects including Applied Data Science, Big Data, Data Structures and Algorithms, Machine Learning, and Database Management Systems.</li>
+                </ul>
+                
+              </div>
+              <div class="details">
+                <h2>Future Aspirations</h2>
+                <ul>
+                  <li>Continue pushing AI boundaries.</li>
+                  <li>Focus on ethical AI and bias reduction.</li>
+                  <li>Improve model efficiency and automation.</li>
+                </ul>
+              </div>
+            </div>
+        
+          </section>
+        
+          <script>
+            const historyItems = document.querySelectorAll('.history-item');
+            const details = document.querySelectorAll('.details');
+        
+            function updateHighlightContent(index) {
+              // Remove highlight class from all
+              historyItems.forEach(item => item.classList.remove('highlight'));
+              details.forEach(content => content.classList.remove('highlight-content'));
+        
+              // Add highlight class to the selected content & marker
+              historyItems[index].classList.add('highlight');
+              details[index].classList.add('highlight-content');
+            }
+        
+            historyItems.forEach((item, index) => {
+              item.addEventListener('click', () => updateHighlightContent(index));
+            });
+        
+          </script>
+    </div>
+
+    <div id="skills" class="page">
+        <div class="skills-container">
+            <h2 style="color: #ff5763;">Skills & Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <i class="fas fa-code"></i>
+                    <h3>Programming</h3>
+                    <p>Python, PostgresSQL, PySpark</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-brain"></i>
+                    <h3>Machine Learning</h3>
+                    <p>TensorFlow, Scikit Learn, LangChain</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-database"></i>
+                    <h3>Databases</h3>
+                    <p>MongoDB, Milvus, Hive, SQL</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Data Visualization</h3>
+                    <p>Seaborn, Matplotlib, Plotly</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-light fa-globe"></i>
+                    <h3>Web Development</h3>
+                    <p>Django, Flask, Html, css, Js</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="projects" class="page">
+        <h2 style="color: #ff5763;margin-left:5rem">Featured Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+        
+                <div class="project-content">
+                    <h3>PII detection</h3>
+                    <p>Fine Tuned a bert model to detect PII in large texts  with 95% accueacr.</p>
+                </div>
+            </div>
+            <div class="project-card">
+              
+                <div class="project-content">
+                    <h3>Travel Planner</h3>
+                    <p>Developed a Travel Itinerary web application using the Apriori algorithm for intelligent route suggestions and daily recommendations.</p>
+                </div>
+            </div>
+            <div class="project-card">
+               
+                <div class="project-content">
+                    <h3>PDF Summarizer</h3>
+                    <p>Created an advanced PDF summarization tool using YOLO models and Llama Vision, reducing review time by 30%.</p>
+                </div>
+            </div>
+            <div class="project-card">
+                
+                <div class="project-content">
+                    <h3>Blog App</h3>
+                    <p>created a Blog app with in depth functionality and RBAC for every user</p>
+                </div>
+            </div>
+            <div class="project-card">
+                
+                <div class="project-content">
+                    <h3>Driver Posture prediction</h3>
+                    <p> Fine Tuned a VGG16 neural network to detect drivers posture while and driving and use the result to alert the driver</p>
+                </div>
+            </div>
+            <div class="project-card">
+                
+                <div class="project-content">
+                    <h3>Road Image Segmentation</h3>
+                    <p> Trained a UNet model to segment vehicles and humans on the road on the camvid dataset achieving 92 percent accuracy over IOU metrics</p>
+                </div>
+            </div>
+            <div class="project-card">
+               
+                <div class="project-content">
+                    <h3>Place Automation</h3>
+                    <p> A one stop Solution for placement cell of the colleges to monitor the placement activites of the students and also of the job offering companies</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="contact" class="page">
+        <h2>Get In Touch</h2>
+        <div class="contact-form">
+            <div class="form-group">
+                <input type="text" placeholder="Your Name">
+            </div>
+            <div class="form-group">
+                <input type="email" placeholder="Your Email">
+            </div>
+            <div class="form-group">
+                <textarea placeholder="Your Message"></textarea>
+            </div>
+            <button type="submit">Send Message</button>
+        </div>
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.style.display = 'none';
+            });
+        
+            // Show the selected page
+            document.getElementById(pageId).style.display = 'block';
+        }
+        
+        // Handle form submission
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Message sent successfully!');
+        });
+        
+        // Initially show only the home section
+        document.addEventListener("DOMContentLoaded", function () {
+            showPage('home'); // Ensure the home page is visible on load
+        });
+        
+        
+    </script>
+    <!-- Add Chat Widget -->
+    <div class="chat-widget">
+        <button class="chat-toggle">
+            <i class="fas fa-comments"></i>
+        </button>
+        <div class="chat-container">
+            <div class="chat-header">
+                <h3>Let's Chat!</h3>
+                <button class="close-chat">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="chat-messages">
+                <div class="message bot">
+                    Hi! I'm Robin's portfolio assistant. How can I help you today?
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" placeholder="Type your message...">
+                <button>Send</button>
+            </div>
+        </div>
+    </div>
+    <script>
+
+    const API_KEY = "AIzaSyBhgMp940JmM9Ob7PJLeZMxj6m97UxN1PE";
+const GEMINI_URL = "https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key=" + API_KEY;
+
+const chatToggle = document.querySelector('.chat-toggle');
+const chatContainer = document.querySelector('.chat-container');
+const closeChat = document.querySelector('.close-chat');
+const chatInput = document.querySelector('.chat-input input');
+const chatSend = document.querySelector('.chat-input button');
+const chatMessages = document.querySelector('.chat-messages');
+
+chatToggle.addEventListener('click', () => {
+    chatContainer.style.display = 'flex';
+    chatToggle.style.display = 'none';
+});
+
+closeChat.addEventListener('click', () => {
+    chatContainer.style.display = 'none';
+    chatToggle.style.display = 'flex';
+});
+
+chatSend.addEventListener('click', sendMessage);
+chatInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') sendMessage();
+});
+
+async function sendMessage() {
+    const message = chatInput.value.trim();
+    if (!message) return;
+
+    addMessage('user', message);
+    chatInput.value = '';
+    
+    const SYSTEM_PROMPT = `<system_prompt>
+YOU ARE "ROBIN SAJAN'S PERSONAL AI ASSISTANT," A SPECIALIZED EXPERT THAT KNOWS EVERYTHING ABOUT HIS **RESUME, SKILLS, AND PROJECTS**.  
+YOU WILL ONLY ANSWER QUESTIONS RELATED TO HIS **WORK EXPERIENCE, EDUCATION, PROJECTS, PROGRAMMING SKILLS, AND TECH STACK**.  
+
+### 🔹 **BEHAVIOR RULES** 🔹  
+
+1. **STRICT FOCUS**:  
+   - ONLY respond if the question is related to Robin Sajan’s resume, projects, skills, or career.  
+   - If the question is **unrelated** (e.g., sports, politics, history), RESPOND WITH **sarcasm** like:  
+     ❌ _"Oh sure, let me pause everything and tell you about that... Just kidding! I only talk about Robin's work."_  
+     ❌ _"As much as I'd love to be your trivia bot, I'm here to discuss Robin's projects and skills."_  
+
+2. **ALLOW GREETINGS & FRIENDLY INTERACTIONS**:  
+   - If the user greets with "Hi," "Hello," etc., respond warmly.  
+   - Example:  
+     ✅ **User**: "Hey!"  
+     ✅ **AI**: "Hey there! Ready to talk about Robin's amazing projects?"  
+
+3. **DETAILED ANSWERS**:  
+   - Provide clear, precise, and well-structured answers about Robin’s experience.  
+   - USE TECHNICAL DEPTH when necessary.  
+
+### 🔹 **WHAT NOT TO DO** 🔹  
+
+❌ **NEVER answer** questions unrelated to Robin’s work or skills.  
+❌ **NEVER generate personal opinions** or speculate beyond Robin’s resume.  
+❌ **NEVER provide information beyond what is available in the resume.**  
+</system_prompt>`;
+    
+    const requestBody = {
+        contents: [{ parts: [{ text: `${SYSTEM_PROMPT}\n\nUser Query: ${message}` }] }]
+    };
+    
+    try {
+        const response = await fetch(GEMINI_URL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(requestBody)
+        });
+        
+        const data = await response.json();
+        console.log("Gemini Response:", data);
+        
+        if (data && data.candidates && data.candidates.length > 0) {
+            addMessage('bot', data.candidates[0].content.parts[0].text);
+        } else {
+            addMessage('bot', "No valid response received.");
+        }
+    } catch (error) {
+        console.error("Error fetching response:", error);
+        addMessage('bot', "Error fetching response. Please try again.");
+    }
+}
+
+function addMessage(type, content) {
+    const messageDiv = document.createElement('div');
+    messageDiv.classList.add('message', type);
+    messageDiv.textContent = content;
+    chatMessages.appendChild(messageDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+</script>
+</body>
+</html>
