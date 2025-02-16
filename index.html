@@ -366,6 +366,10 @@
             margin: 0;
             padding: 20px;
           }
+          .about-grid{
+            width: fit-content;
+            padding: 10px;
+          }
         }
         /* Skills Page */
         #skills {
@@ -777,7 +781,7 @@
 
     <div id="home" class="page active">
         <div class="hero-content">
-            <h1 style="text-align:left;margin-top:100px">Hello, I'm <br><div style="margin-top: -50px">Robin Sajan</div></h1>
+            <h1 style="text-align:left;margin-top:100px">Hello, I'm <br><div style="margin-top: -30px">Robin Sajan</div></h1>
             <div>
                 <p style="text-align: justify;">I'm a <b style="color:#ff5763">Data Scientist</b> at Jio with over a year of experience in Generative AI and Machine Learning, building scalable AI-driven solutions. I’m passionate about solving complex problems, optimizing AI workflows, and exploring the latest advancements in the field.
                 My expertise includes Python, Gen-AI, Machine Learning, SQL databases, and more, with a strong focus on RAG</p>
@@ -785,9 +789,9 @@
             
             <div class="social-links">
                 <a href="mailto:robinsajan4@gmail.com"><i class="fas fa-envelope"></i></a>
-                <a href="https://linkedin.com/in/your-profile"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.linkedin.com/in/robin-sajan-28152920b/"><i class="fab fa-linkedin"></i></a>
                 <a href="tel:+918879099411"><i class="fas fa-phone"></i></a>
-                <a href="https://github.com/yourusername"><i class="fab fa-github"></i></a>
+                <a href="https://github.com/robinsajan"><i class="fab fa-github"></i></a>
             </div>
         </div>
     </div>
@@ -854,6 +858,14 @@
                     <li>Covered subjects including Applied Data Science, Big Data, Data Structures and Algorithms, Machine Learning, and Database Management Systems.</li>
                 </ul>
                 
+              </div>
+              <div class="details">
+                <h2>Future Aspirations</h2>
+                <ul>
+                  <li>Continue pushing AI boundaries.</li>
+                  <li>Focus on ethical AI and bias reduction.</li>
+                  <li>Improve model efficiency and automation.</li>
+                </ul>
               </div>
             </div>
         
@@ -961,7 +973,7 @@
             <div class="project-card">
                
                 <div class="project-content">
-                    <h3>Placement Automation</h3>
+                    <h3>Place Automation</h3>
                     <p> A one stop Solution for placement cell of the colleges to monitor the placement activites of the students and also of the job offering companies</p>
                 </div>
             </div>
@@ -1067,7 +1079,8 @@ async function sendMessage() {
     
     const SYSTEM_PROMPT = `<system_prompt>
 YOU ARE "ROBIN SAJAN'S PERSONAL AI ASSISTANT," A SPECIALIZED EXPERT THAT KNOWS EVERYTHING ABOUT HIS **RESUME, SKILLS, AND PROJECTS**.  
-YOU WILL ONLY ANSWER QUESTIONS RELATED TO HIS **WORK EXPERIENCE, EDUCATION, PROJECTS, PROGRAMMING SKILLS, AND TECH STACK**.  
+YOU WILL ONLY ANSWER QUESTIONS RELATED TO HIS **WORK EXPERIENCE, EDUCATION, PROJECTS, PROGRAMMING SKILLS, AND TECH STACK>
+ROBIN IS A EXPERINCED DATA SCIENTIST WITH PROVEN EXPERINCE IN CREATING GENARARTIVE AI SOLUTIONS.**.  
 
 ### 🔹 **BEHAVIOR RULES** 🔹  
 
@@ -1104,6 +1117,7 @@ YOU WILL ONLY ANSWER QUESTIONS RELATED TO HIS **WORK EXPERIENCE, EDUCATION, PROJ
             headers: {
                 "Content-Type": "application/json",
                  "Referer": "https://robinsajan.github.io/portfolio/"
+
             },
             body: JSON.stringify(requestBody)
         });
