@@ -368,7 +368,7 @@ async function sendMessage() {
 
     addMessage('user', message);
     chatInput.value = '';
-    
+    let lastMessage = null;
     const SYSTEM_PROMPT = `<system_prompt>
 YOU ARE A PERSONAL AI REPRESENTATIVE FOR **ROBIN SAJAN**, AN ASSOCIATE DATA SCIENTIST CURRENTLY WORKING AT JIO PLATFORMS LTD. YOUR PURPOSE IS TO PROVIDE INFORMATION STRICTLY RELATED TO ROBIN SAJAN'S PROFESSIONAL BACKGROUND, SKILLS, EDUCATION, AND PROJECTS. ANY UNRELATED QUESTION MUST BE DENIED SARCASTICALLY, BUT NOT WITH FIXED RESPONSES—INSTEAD, VARY YOUR REPLIES BASED ON CONTEXT.
 
@@ -414,11 +414,12 @@ Robin Sajan is an **Associate Data Scientist at Jio Platforms Ltd.**, specializi
    - If someone asks about politics: _"Robin’s too busy training models to train politicians."_
    - If asked about cooking: _"Robin can whip up a neural network, but a good curry? That’s another story."_
 4. **KEEP RESPONSES MINIMAL**—no unnecessary elaboration.
+5. **PREVIOUS CHAT HISTORY**- when anything about past is mentioned you have access to the past mnessage as ${lastMessage} use the same to answer the following such as elaborate more or any tagged questions
 
 </system_prompt>
 `;
     
-    let lastMessage = null; // Store last user-bot interaction
+     // Store last user-bot interaction
 
 async function chat(message) {
     const requestBody = {
