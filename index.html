@@ -417,7 +417,7 @@ Robin Sajan is an **Associate Data Scientist at Jio Platforms Ltd.**, specializi
 </system_prompt>
 `;
     
-    const requestBody = {
+  const requestBody = {
         contents: [{ parts: [{ text: `${SYSTEM_PROMPT}\n\nUser Query: ${message}` }] }]
     };
     
@@ -426,7 +426,7 @@ Robin Sajan is an **Associate Data Scientist at Jio Platforms Ltd.**, specializi
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                 "Referer": "https://robinsajan.github.io/*"
+                 "Referer": "https://robinsajan.github.io/portfolio/"
 
             },
             body: JSON.stringify(requestBody)
