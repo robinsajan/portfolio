@@ -422,32 +422,26 @@ Robin Sajan is an **Associate Data Scientist at Jio Platforms Ltd.**, specializi
     
      // Store last user-bot interaction
 
-async function chat(message) {
-    const requestBody = {
-        contents: [{ 
-            parts: [{ 
-                text: `${SYSTEM_PROMPT}\n\n${lastMessage ? `${lastMessage}\n\n` : ""}User Query: ${message}` 
-            }] 
-        }]
+ const requestBody = {
+        contents: [{ parts: [{ text: `${SYSTEM_PROMPT}\n\nUser Query: ${message}` }] }]
     };
-
+    
     try {
         const response = await fetch(GEMINI_URL, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Referer": "https://robinsajan.github.io/portfolio/"
+                 "Referer": "https://robinsajan.github.io/portfolio/"
+
             },
             body: JSON.stringify(requestBody)
         });
-
+        
         const data = await response.json();
         console.log("Gemini Response:", data);
-
-        if (data?.candidates?.length > 0) {
-            const botResponse = data.candidates[0].content.parts[0].text;
-            addMessage('bot', botResponse);
-            lastMessage = `User Query: ${message}\nBot: ${botResponse}`; // Store last interaction
+        
+        if (data && data.candidates && data.candidates.length > 0) {
+            addMessage('bot', data.candidates[0].content.parts[0].text);
         } else {
             addMessage('bot', "No valid response received.");
         }
@@ -463,7 +457,6 @@ function addMessage(type, content) {
     messageDiv.textContent = content;
     chatMessages.appendChild(messageDiv);
     chatMessages.scrollTop = chatMessages.scrollHeight;
-}
 
 }
 </script>
