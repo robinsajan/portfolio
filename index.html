@@ -337,7 +337,7 @@
     </div>
     <script>
 
-    const API_KEY = "AIzaSyBhgMp940JmM9Ob7PJLeZMxj6m97UxN1PE";
+     const API_KEY = "AIzaSyBhgMp940JmM9Ob7PJLeZMxj6m97UxN1PE";
 const GEMINI_URL = "https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key=" + API_KEY;
 
 const chatToggle = document.querySelector('.chat-toggle');
@@ -346,7 +346,6 @@ const closeChat = document.querySelector('.close-chat');
 const chatInput = document.querySelector('.chat-input input');
 const chatSend = document.querySelector('.chat-input button');
 const chatMessages = document.querySelector('.chat-messages');
-let lastMessage = "";
 
 chatToggle.addEventListener('click', () => {
     chatContainer.style.display = 'flex';
@@ -419,13 +418,11 @@ Robin Sajan is an **Associate Data Scientist at Jio Platforms Ltd.**, specializi
 
 </system_prompt>
 `;
-console.log(SYSTEM_PROMPT);
-     // Store last user-bot interaction
-
- const requestBody = {
+    
+    const requestBody = {
         contents: [{ parts: [{ text: `${SYSTEM_PROMPT}\n\nUser Query: ${message}` }] }]
     };
-    console.log(requestBody)
+    
     try {
         const response = await fetch(GEMINI_URL, {
             method: "POST",
@@ -457,7 +454,6 @@ function addMessage(type, content) {
     messageDiv.textContent = content;
     chatMessages.appendChild(messageDiv);
     chatMessages.scrollTop = chatMessages.scrollHeight;
-
 }
 </script>
 </body>
