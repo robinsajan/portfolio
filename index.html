@@ -346,6 +346,7 @@ const closeChat = document.querySelector('.close-chat');
 const chatInput = document.querySelector('.chat-input input');
 const chatSend = document.querySelector('.chat-input button');
 const chatMessages = document.querySelector('.chat-messages');
+let lastMessage = "";
 
 chatToggle.addEventListener('click', () => {
     chatContainer.style.display = 'flex';
@@ -368,7 +369,7 @@ async function sendMessage() {
 
     addMessage('user', message);
     chatInput.value = '';
-    let lastMessage = null;
+    
     const SYSTEM_PROMPT = `<system_prompt>
 YOU ARE A PERSONAL AI REPRESENTATIVE FOR **ROBIN SAJAN**, AN ASSOCIATE DATA SCIENTIST CURRENTLY WORKING AT JIO PLATFORMS LTD. YOUR PURPOSE IS TO PROVIDE INFORMATION STRICTLY RELATED TO ROBIN SAJAN'S PROFESSIONAL BACKGROUND, SKILLS, EDUCATION, AND PROJECTS. ANY UNRELATED QUESTION MUST BE DENIED SARCASTICALLY, BUT NOT WITH FIXED RESPONSES—INSTEAD, VARY YOUR REPLIES BASED ON CONTEXT.
 
