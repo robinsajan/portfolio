@@ -8,450 +8,221 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- [Previous HTML content remains the same until before closing body tag] -->
     <header class="header">
         <nav class="nav-container">
-            <a href="#" class="logo"><img  src="logo_1.png" width="50"></a>
-            
-            <button class="hamburger" aria-label="Toggle Menu">
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-            </button>
-
             <ul class="nav-menu">
                 <li><a href="#" onclick="showPage('home')">Home</a></li>
                 <li><a href="#" onclick="showPage('about')">About</a></li>
-                <li><a href="#" onclick="showPage('skills')">Skills</a></li>
-                <li><a href="#" onclick="showPage('projects')">Projects</a></li>
-                <!-- <li><a href="#" onclick="showPage('contact')">Contact</a></li> -->
+                <li><a href="#" onclick="showPage('blog')">Blog</a></li>
             </ul>
         </nav>
     </header>
-    <script>
-        const hamburger = document.querySelector('.hamburger');
-        const navMenu = document.querySelector('.nav-menu');
-        const header = document.querySelector('.header');
 
-        hamburger.addEventListener('click', toggleMenu);
-
-        function toggleMenu() {
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
-            header.classList.toggle('menu-active');
-            
-            // Toggle aria-expanded for accessibility
-            const isExpanded = hamburger.classList.contains('active');
-            hamburger.setAttribute('aria-expanded', isExpanded);
-        }
-
-        // Close menu when clicking a link
-        document.querySelectorAll('.nav-menu li a').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-                header.classList.remove('menu-active');
-                hamburger.setAttribute('aria-expanded', false);
-            });
-        });
-
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-                header.classList.remove('menu-active');
-                hamburger.setAttribute('aria-expanded', false);
-            }
-        });
-
-        // Prevent menu from closing when clicking inside
-        navMenu.addEventListener('click', (e) => {
-            e.stopPropagation();
-        });
-    </script>
+    <div class="divider"></div>
 
     <div id="home" class="page active">
         <div class="hero-content">
-            <h1 style="text-align:left;margin-top:100px">Hello, I'm <br><div style="margin-top: -30px">Robin Sajan</div></h1>
-            <div>
-                <p style="text-align: justify;">I'm a <b style="color:#ff5763">Data Scientist</b> at Jio with over a year of experience in Generative AI and Machine Learning, building scalable AI-driven solutions. I’m passionate about solving complex problems, optimizing AI workflows, and exploring the latest advancements in the field.
-                My expertise includes Python, Gen-AI, Machine Learning, SQL databases, and more, with a strong focus on RAG</p>
-            </div>
+            <h1>Robin Sajan</h1>
+            <p>I'm a <b>Data Scientist</b> with experience in Generative AI and Machine Learning, building scalable AI-driven solutions. I'm passionate about solving complex problems, optimizing AI workflows, and exploring the latest advancements in the field.</p>
             
             <div class="social-links">
-                <a href="mailto:robinsajan4@gmail.com"><i class="fas fa-envelope"></i></a>
-                <a href="https://www.linkedin.com/in/robin-sajan-28152920b/"><i class="fab fa-linkedin"></i></a>
-                <a href="tel:+918879099411"><i class="fas fa-phone"></i></a>
-                <a href="https://github.com/robinsajan"><i class="fab fa-github"></i></a>
+                <a href="mailto:robinsajan4@gmail.com" aria-label="Email" title="Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/robin-sajan-28152920b/" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="tel:+918879099411" aria-label="Phone" title="Phone"><i class="fas fa-phone"></i></a>
+                <a href="https://github.com/robinsajan" aria-label="GitHub" title="GitHub"><i class="fab fa-github"></i></a>
             </div>
         </div>
+        
+        <div class="divider"></div>
     </div>
 
     <div id="about" class="page">
         <div class="about-grid">
             <div class="about-content">
-                <h2 style="color:#ff5763">About Me</h2>
-                <p style="text-align: justify;">I am Robin Sajan, an Associate Data Scientist with a strong foundation in machine learning, data engineering, large language models and AI security. My journey began with a Bachelor's degree in Computer Engineering, where I honed my skills in algorithms, data structures, and scalable systems. Through hands-on experience, I have worked on cutting-edge AI security solutions, recommendation systems, and large-scale data pipelines..</p>
-                <p style="text-align: justify;">My expertise lies in enhancing AI safety, as demonstrated by my work on the Safe AI Platform and the Prompt Injection Detection Suite, reducing vulnerabilities in LLM applications. I have also developed RAG-based chatbots, fine-tuned BERT for PII detection, and optimized data processing workflows handling terabytes of data weekly.</p>
-                <p style="text-align: justify;">Beyond technology, I am an explorer at heart. Whether immersing myself in anime, playing football, or delving into astronomy, I approach each passion with enthusiasm and curiosity.</p>
-                <p style="text-align: justify;">Let’s connect to collaborate, exchange insights, or explore the limitless possibilities of AI and beyond.</p>
+                <h2>About Me</h2>
+                <p>I'm a Data Scientist specializing in AI security, machine learning, and large language models. I build scalable solutions that enhance AI safety and optimize data workflows.</p>
+                <p>My work includes developing the Safe AI Platform, prompt injection detection systems, and RAG-based chatbots. I also process 10TB+ of data weekly using PySpark and Hive.</p>
+                <p>When I'm not coding, you'll find me watching anime, playing football, or exploring astronomy.</p>
             </div>
-           
         </div>
-        <br><br>
-        <section class="history-container">
-    
 
-            <!-- Timeline -->
+        <section class="history-container">
             <div class="history">
-              <div class="history-line"></div>
               <div class="history-item highlight" data-slide="0">
-                <div class="history-title">Data Scientist @ Jio Platforms ltd. </div>
+                    <div class="history-title">Experience</div>
               </div>
               <div class="history-item" data-slide="1">
-                <div class="history-title">Web Developer Intern</div>
+                    <div class="history-title">Internship</div>
               </div>
               <div class="history-item" data-slide="2">
-                <div class="history-title">Education </div>
+                    <div class="history-title">Education</div>
               </div>
             </div>
         
-            <!-- Content Section -->
             <div class="details-section">
               <div class="details highlight-content">
-                <h2>Data Scientist (Dec 2023-present)</h2>
-                <ul>
-                    <li><strong>Developed Safe AI Platform</strong> – Reduced LLM security vulnerabilities by 30%, enhancing system reliability and security.</li>
-                    <li><strong>Built Prompt Injection Detection Suite</strong> – Created a fine-tuned model that outperformed existing tools, generating 10K+ adversarial prompts and identifying 25% more vulnerabilities.</li>
-                    <li><strong>Designed PII Identification Suite</strong> – Achieved 100% test case validation, ensuring data privacy compliance and reducing regulatory risks.</li>
-                    <li><strong>Developed RAG-based Chatbot</strong> – Improved information security query resolution time to under 10 minutes, enhancing efficiency.</li>
-                    <li><strong>Engineered a Recommendation System</strong> – Increased automation efficiency by 40%, improving relevance and user experience.</li>
-                    <li><strong>Built Scalable Data Pipelines</strong> – Processed 10TB+ of data weekly using PySpark and Hive, optimizing storage and reducing ingestion latency by 50%.</li>
-                    <li><strong>Automated ETL Processes</strong> – Transformed and loaded 5TB+ of data into Hive tables, boosting analytics and improving reporting accuracy.</li>
-                    <li><strong>Created Social Media Summarizer</strong> – Delivered sentiment-based insights for strategic decision-making and market positioning.</li>
+                    <h2>Data Scientist @ Jio (Dec 2023 - May 2025)</h2>
+                    <ul>
+                        <li>Developed Safe AI Platform – Reduced LLM security vulnerabilities by 30%</li>
+                        <li>Built Prompt Injection Detection Suite – Identified 25% more vulnerabilities</li>
+                        <li>Designed PII Identification Suite – Achieved 100% test case validation</li>
+                        <li>Developed RAG-based Chatbot – Improved query resolution time to under 10 minutes</li>
+                        <li>Built Scalable Data Pipelines – Processed 10TB+ of data weekly using PySpark and Hive</li>
                 </ul>
-                
               </div>
               <div class="details">
                 <h2>Web Developer Intern @ Sahu Technology</h2>
                 <ul>
-                    <li><strong>Web Developer Intern at Sahu Technology</strong> – Developed and enhanced features for a blog application using Django.</li>
-                    <li><strong>Implemented Comment Like Feature</strong> – Added functionality for users to like comments, improving engagement and user interaction.</li>
-                    <li><strong>Collaborated with Development Team</strong> – Assisted in debugging, testing, and refining application features.</li>
+                        <li>Developed features for a blog application using Django</li>
+                        <li>Implemented Comment Like Feature to improve user engagement</li>
+                        <li>Collaborated with Development Team on debugging and testing</li>
                 </ul>
-                
               </div>
               <div class="details">
-                <h2>Bachelors of Engineering in Computer Science</h2>
-                <ul>
-                    <li>Bachelor of Technology in Computer Engineering from Pillai College of Engineering (2019-2023).</li>
-                    <li>Achieved a CGPA of 9.48, reflecting strong academic performance.</li>
-                    <li>Covered subjects including Applied Data Science, Big Data, Data Structures and Algorithms, Machine Learning, and Database Management Systems.</li>
-                </ul>
-                
-              </div>
-              <div class="details">
-                <h2>Future Aspirations</h2>
-                <ul>
-                  <li>Continue pushing AI boundaries.</li>
-                  <li>Focus on ethical AI and bias reduction.</li>
-                  <li>Improve model efficiency and automation.</li>
+                    <h2>Bachelor of Engineering in Computer Science</h2>
+                    <ul>
+                        <li>B.Tech in Computer Engineering from Pillai College of Engineering (2019-2023)</li>
+                        <li>CGPA: 9.48</li>
+                        <li>Specialization: Applied Data Science, Big Data, Machine Learning</li>
                 </ul>
               </div>
             </div>
-        
           </section>
         
-          <script>
-            const historyItems = document.querySelectorAll('.history-item');
-            const details = document.querySelectorAll('.details');
-        
-            function updateHighlightContent(index) {
-              // Remove highlight class from all
-              historyItems.forEach(item => item.classList.remove('highlight'));
-              details.forEach(content => content.classList.remove('highlight-content'));
-        
-              // Add highlight class to the selected content & marker
-              historyItems[index].classList.add('highlight');
-              details[index].classList.add('highlight-content');
-            }
-        
-            historyItems.forEach((item, index) => {
-              item.addEventListener('click', () => updateHighlightContent(index));
-            });
-        
-          </script>
+        <div class="divider"></div>
     </div>
 
-    <div id="skills" class="page">
-        <div class="skills-container">
-            <h2 style="color: #ff5763;">Skills & Expertise</h2>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <i class="fas fa-code"></i>
-                    <h3>Programming</h3>
-                    <p>Python, PostgresSQL, PySpark</p>
-                </div>
-                <div class="skill-card">
-                    <i class="fas fa-brain"></i>
-                    <h3>Machine Learning</h3>
-                    <p>TensorFlow, Scikit Learn, LangChain</p>
-                </div>
-                <div class="skill-card">
-                    <i class="fas fa-database"></i>
-                    <h3>Databases</h3>
-                    <p>MongoDB, Milvus, Hive, SQL</p>
-                </div>
-                <div class="skill-card">
-                    <i class="fas fa-chart-line"></i>
-                    <h3>Data Visualization</h3>
-                    <p>Seaborn, Matplotlib, Plotly</p>
-                </div>
-                <div class="skill-card">
-                    <i class="fas fa-light fa-globe"></i>
-                    <h3>Web Development</h3>
-                    <p>Django, Flask, Html, css, Js</p>
-                </div>
-            </div>
+    <div id="blog" class="page">
+        <h2>Blog</h2>
+        <div id="blog-list">
+            <p>Loading posts...</p>
         </div>
-    </div>
-
-    <div id="projects" class="page">
-        <h2 style="color: #ff5763;margin-left:5rem">Featured Projects</h2>
-        <div class="projects-grid">
-            <div class="project-card">
         
-                <div class="project-content">
-                    <h3>PII detection</h3>
-                    <p>Fine Tuned a bert model to detect PII in large texts  with 95% accueacr.</p>
-                </div>
-            </div>
-            <div class="project-card">
-              
-                <div class="project-content">
-                    <h3>Travel Planner</h3>
-                    <p>Developed a Travel Itinerary web application using the Apriori algorithm for intelligent route suggestions and daily recommendations.</p>
-                </div>
-            </div>
-            <div class="project-card">
-               
-                <div class="project-content">
-                    <h3>PDF Summarizer</h3>
-                    <p>Created an advanced PDF summarization tool using YOLO models and Llama Vision, reducing review time by 30%.</p>
-                </div>
-            </div>
-            <div class="project-card">
-                
-                <div class="project-content">
-                    <h3>Blog App</h3>
-                    <p>created a Blog app with in depth functionality and RBAC for every user</p>
-                </div>
-            </div>
-            <div class="project-card">
-                
-                <div class="project-content">
-                    <h3>Driver Posture prediction</h3>
-                    <p> Fine Tuned a VGG16 neural network to detect drivers posture while and driving and use the result to alert the driver</p>
-                </div>
-            </div>
-            <div class="project-card">
-                
-                <div class="project-content">
-                    <h3>Road Image Segmentation</h3>
-                    <p> Trained a UNet model to segment vehicles and humans on the road on the camvid dataset achieving 92 percent accuracy over IOU metrics</p>
-                </div>
-            </div>
-            <div class="project-card">
-               
-                <div class="project-content">
-                    <h3>Place Automation</h3>
-                    <p> A one stop Solution for placement cell of the colleges to monitor the placement activites of the students and also of the job offering companies</p>
-                </div>
-            </div>
-        </div>
+        <div class="divider"></div>
     </div>
 
-    <div id="contact" class="page">
-        <h2>Get In Touch</h2>
-        <div class="contact-form">
-            <div class="form-group">
-                <input type="text" placeholder="Your Name">
-            </div>
-            <div class="form-group">
-                <input type="email" placeholder="Your Email">
-            </div>
-            <div class="form-group">
-                <textarea placeholder="Your Message"></textarea>
-            </div>
-            <button type="submit">Send Message</button>
+    <div id="blog-post" class="page">
+        <div id="blog-post-content">
+            <div id="post-content"></div>
         </div>
+        
+        <div class="divider"></div>
     </div>
+
+    <footer class="footer">
+        <p>Built by Robin Sajan</p>
+    </footer>
 
     <script>
         function showPage(pageId) {
-            // Hide all pages
             document.querySelectorAll('.page').forEach(page => {
                 page.style.display = 'none';
             });
-        
-            // Show the selected page
             document.getElementById(pageId).style.display = 'block';
         }
         
-        // Handle form submission
-        document.querySelector('.contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Message sent successfully!');
-        });
-        
-        // Initially show only the home section
-        document.addEventListener("DOMContentLoaded", function () {
-            showPage('home'); // Ensure the home page is visible on load
-        });
-        
-        
-    </script>
-    <!-- Add Chat Widget -->
-    <div class="chat-widget">
-        <button class="chat-toggle">
-            <i class="fas fa-comments"></i>
-        </button>
-        <div class="chat-container">
-            <div class="chat-header">
-                <h3>Let's Chat!</h3>
-                <button class="close-chat">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="chat-messages">
-                <div class="message bot">
-                    Hi! I'm Robin's portfolio assistant. How can I help you today?
-                </div>
-            </div>
-            <div class="chat-input">
-                <input type="text" placeholder="Type your message...">
-                <button>Send</button>
-            </div>
-        </div>
-    </div>
-    <script>
+        const historyItems = document.querySelectorAll('.history-item');
+        const details = document.querySelectorAll('.details');
 
-     const API_KEY = "AIzaSyBhgMp940JmM9Ob7PJLeZMxj6m97UxN1PE";
-const GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=" + API_KEY;
-
-const chatToggle = document.querySelector('.chat-toggle');
-const chatContainer = document.querySelector('.chat-container');
-const closeChat = document.querySelector('.close-chat');
-const chatInput = document.querySelector('.chat-input input');
-const chatSend = document.querySelector('.chat-input button');
-const chatMessages = document.querySelector('.chat-messages');
-
-chatToggle.addEventListener('click', () => {
-    chatContainer.style.display = 'flex';
-    chatToggle.style.display = 'none';
-});
-
-closeChat.addEventListener('click', () => {
-    chatContainer.style.display = 'none';
-    chatToggle.style.display = 'flex';
-});
-
-chatSend.addEventListener('click', sendMessage);
-chatInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') sendMessage();
-});
-
-async function sendMessage() {
-    const message = chatInput.value.trim();
-    if (!message) return;
-
-    addMessage('user', message);
-    chatInput.value = '';
-    
-    const SYSTEM_PROMPT = `<system_prompt>
-YOU ARE A PERSONAL AI REPRESENTATIVE FOR **ROBIN SAJAN**, AN ASSOCIATE DATA SCIENTIST CURRENTLY WORKING AT JIO PLATFORMS LTD. YOUR PURPOSE IS TO PROVIDE INFORMATION STRICTLY RELATED TO ROBIN SAJAN'S PROFESSIONAL BACKGROUND, SKILLS, EDUCATION, AND PROJECTS. ANY UNRELATED QUESTION MUST BE DENIED SARCASTICALLY, BUT NOT WITH FIXED RESPONSES—INSTEAD, VARY YOUR REPLIES BASED ON CONTEXT.
-DO NOT LIE OR MENTION ANY OTHER ACHIVEMNETS THAN THE ONE GIVEN BELOW.
-### GREETINGS PROTOCOL
-- ALWAYS respond to greetings in a friendly and engaging manner.
-
-### ROBIN SAJAN - PROFESSIONAL SUMMARY
-Robin Sajan is an **Associate Data Scientist at Jio Platforms Ltd.**, specializing in AI security, data science, and automation. He has successfully led multiple projects improving AI safety, efficiency, and reliability.
-
-### CONTACT INFORMATION
-- **Phone:** +91 8879099411
-- **Email:** robinsajan4@gmail.com
-- **LinkedIn:** [Robin Sajan](https://www.linkedin.com/in/robin-sajan-28152920b/)
-
-### EXPERIENCE & PROJECTS
-- **Web Developer Intern at Sahu Technology**: Built their blog application using Django.
-- **Safe AI Platform**: Reduced LLM security vulnerabilities by 30%.
-- **Prompt Injection Detection Suite**: Identified 25% more vulnerabilities.
-- **PII Identification Suite**: Achieved 100% test case validation.
-- **RAG-based Chatbot for InfoSec**: Reduced query resolution time under 10 minutes.
-- **Recommendation System**: Increased automation efficiency by 40%.
-- **Big Data Pipelines**: Processed 10TB+ weekly, reducing latency by 50%.
-- **Automated ETL Processes**: Transformed 5TB+ of data, improving reporting speed.
-- **Social Media Summarizer**: Provided sentiment insights for strategy.
-- **Tour Planner Web Application**: Used Apriori algorithm for travel itineraries.
-- **PDF Summarizer**: Reduced review time by 30% with YOLO models.
-- **Driver Posture Prediction**: Achieved 92% accuracy with VGG19.
-
-### EDUCATION
-- **B. Tech in Computer Engineering** | Pillai College of Engineering | **CGPA: 9.48 (2019-2023)**
-
-### TECHNICAL SKILLS
-- **Programming:** Python  
-- **Databases:** SQL, Milvus, MongoDB  
-- **Data Science:** TensorFlow, RAGs, LangChain, Scikit Learn, PySpark  
-- **Big Data & Cloud:** Hive, Kafka, Airflow  
-- **Web Frameworks:** FastAPI, Flask, Django  
-
-### STRICT RULES FOR RESPONDING:
-1. **Always respond to greetings naturally and appropriately.**
-2. **ONLY** answer questions related to Robin Sajan’s professional details, projects, skills, or education.
-3. **If asked an unrelated question, craft a unique sarcastic denial based on context, rather than repeating fixed phrases.** Examples:
-   - If someone asks about politics: _"Robin’s too busy training models to train politicians."_
-   - If asked about cooking: _"Robin can whip up a neural network, but a good curry? That’s another story."_
-4. **KEEP RESPONSES MINIMAL**—no unnecessary elaboration.
-</system_prompt>
-`;
-    
-  const requestBody = {
-        contents: [{ parts: [{ text: `${SYSTEM_PROMPT}\n\nUser Query: ${message}` }] }]
-    };
-    
-    try {
-        const response = await fetch(GEMINI_URL, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                 "Referer": "https://robinsajan.github.io/portfolio/"
-
-            },
-            body: JSON.stringify(requestBody)
-        });
-        
-        const data = await response.json();
-        console.log("Gemini Response:", data);
-        
-        if (data && data.candidates && data.candidates.length > 0) {
-            addMessage('bot', data.candidates[0].content.parts[0].text);
-        } else {
-            addMessage('bot', "No valid response received.");
+        function updateHighlightContent(index) {
+            historyItems.forEach(item => item.classList.remove('highlight'));
+            details.forEach(content => content.classList.remove('highlight-content'));
+            historyItems[index].classList.add('highlight');
+            details[index].classList.add('highlight-content');
         }
-    } catch (error) {
-        console.error("Error fetching response:", error);
-        addMessage('bot', "Error fetching response. Please try again.");
-    }
-}
 
-function addMessage(type, content) {
-    const messageDiv = document.createElement('div');
-    messageDiv.classList.add('message', type);
-    messageDiv.textContent = content;
-    chatMessages.appendChild(messageDiv);
-    chatMessages.scrollTop = chatMessages.scrollHeight;
+        historyItems.forEach((item, index) => {
+            item.addEventListener('click', () => updateHighlightContent(index));
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            showPage('home');
+            loadBlogPosts();
+        });
+
+        // Load blog posts from pre-generated posts.json
+        async function loadBlogPosts() {
+            const blogListContainer = document.getElementById('blog-list');
+            
+            try {
+                const response = await fetch('blogs/posts.json');
+                
+                if (!response.ok) {
+                    throw new Error('No blog posts found');
+                }
+                
+                const blogs = await response.json();
+                
+                if (blogs.length === 0) {
+                    blogListContainer.innerHTML = '<p>No posts yet.</p>';
+                    return;
+                }
+                
+                // Sort by date - newest first (reverse chronological)
+                blogs.sort((a, b) => new Date(b.date) - new Date(a.date));
+                
+                // Store blogs globally for later use
+                window.blogPosts = blogs;
+                
+                // Create blog list HTML
+                let blogHTML = '<div class="blog-list">';
+                blogs.forEach((blog, index) => {
+                    const date = formatDate(blog.date);
+                    blogHTML += `
+                        <div class="blog-post">
+                            <span class="blog-date">${date}</span>
+                            <a href="#" onclick="loadBlogPost(${index}); return false;" class="blog-title">${blog.title}</a>
+                        </div>
+                    `;
+                });
+                blogHTML += '</div>';
+                
+                blogListContainer.innerHTML = blogHTML;
+                
+            } catch (error) {
+                console.log('Blog loading error:', error);
+                blogListContainer.innerHTML = '<p>No posts yet.</p>';
+            }
+        }
+
+        // Load and display a single blog post
+        async function loadBlogPost(index) {
+            const blog = window.blogPosts[index];
+            const postContentDiv = document.getElementById('post-content');
+            
+            try {
+                const response = await fetch(`blogs/${blog.file}`);
+                const content = await response.text();
+                
+                const date = formatDate(blog.date);
+                
+                // Display the blog post with title, date, and content
+                postContentDiv.innerHTML = `
+                    <h1>${blog.title}</h1>
+                    <p class="blog-date" style="color: #666; margin-bottom: 30px;">${date}</p>
+                    <div class="blog-content">
+                        ${content.split('\n').map(line => {
+                            if (line.trim() === '') return '<br>';
+                            return `<p>${line}</p>`;
+                        }).join('')}
+                    </div>
+                `;
+                
+                showPage('blog-post');
+                
+    } catch (error) {
+                console.log('Error loading blog post:', error);
+                postContentDiv.innerHTML = '<p>Error loading post.</p>';
+            }
+        }
+
+        // Format date as "DD Mon, YYYY"
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            const day = date.getDate();
+            const month = date.toLocaleDateString('en-US', { month: 'short' });
+            const year = date.getFullYear();
+            return `${day} ${month}, ${year}`;
 }
 </script>
 </body>
