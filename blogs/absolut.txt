@@ -1,3 +1,3 @@
-building a Group travel app and just giving it out just to have an understanding. 
+Building a Group travel app and just giving it out just to have an understanding. 
 Its a completely vibecoded app well i built the schema have procured a domain and will
 deploy it soon in the coming weeks  i want to targetn it by first week of april. we be fun lets see 
